@@ -1,0 +1,115 @@
+# todo.txt Skill for Claude
+
+A [Claude Agent Skill](https://docs.claude.com/en/docs/claude-code/skills) that lets AI agents manage your tasks, todos, and reminders using the [todo.txt CLI](https://github.com/todotxt/todo.txt-cli) (`todo.sh`).
+
+Ask Claude things like *"add buy milk to my groceries"*, *"what's on my list for work?"*, or *"mark the dentist task as done"* — the skill translates these into the right `todo.sh` commands, runs them, and shows you the updated list.
+
+> **Why this exists:** the todo.txt format is a plain-text, future-proof, tool-agnostic way to track tasks. This skill teaches Claude how to drive the official CLI so you can manage that file conversationally — no public skill for it existed, so here it is.
+
+## Features
+
+- 🗣️ **Natural language → CLI** — describe what you want; the skill picks the right command and flags.
+- ➕ **Full task lifecycle** — add, list, filter, prioritize, edit, complete, archive, and delete tasks.
+- 🏷️ **Projects & contexts** — understands `+project` and `@context` tags, plus `key:value` metadata like `due:2026-06-30`.
+- 🔧 **Self-installing guidance** — if `todo.sh` isn't installed, the skill walks the agent through setup on macOS and Linux.
+- 📄 **Plain text, yours forever** — your tasks stay in a portable `todo.txt` file you fully control.
+
+## Prerequisites
+
+- [Claude Code](https://docs.claude.com/en/docs/claude-code) (or another client that supports Agent Skills).
+- The [todo.txt CLI](https://github.com/todotxt/todo.txt-cli) (`todo.sh`). The skill will offer to install it for you, or you can set it up ahead of time:
+
+  **macOS**
+  ```shell
+  brew install todo-txt
+  cp -n "$(brew --prefix)/opt/todo-txt/todo.cfg" ~/.todo.cfg
+  ```
+
+  **Linux (from source)**
+  ```shell
+  git clone https://github.com/todotxt/todo.txt-cli.git
+  cd todo.txt-cli && make && sudo make install
+  cp /usr/local/etc/todo/config ~/.todo/config
+  ```
+
+  Verify with `todo.sh -V`.
+
+## Installation
+
+Clone this repository into your Claude skills directory. The skill is the repository itself, so the folder name becomes the skill name.
+
+**Personal skill (available in every project):**
+```shell
+git clone https://github.com/aguilera-ee/todo.txt-skill.git ~/.claude/skills/todo.txt-skill
+```
+
+**Project-scoped skill (shared with a repo via `.claude/skills`):**
+```shell
+git clone https://github.com/aguilera-ee/todo.txt-skill.git .claude/skills/todo.txt-skill
+```
+
+That's it. The next time you start Claude Code, the `todo.txt-skill` skill will be available.
+
+## Usage
+
+Invoke it explicitly with a slash command, or just describe what you need and let Claude pick the skill:
+
+```
+/todo.txt-skill list all tasks
+/todo.txt-skill add "buy milk +groceries @store"
+/todo.txt-skill mark task 3 as done
+```
+
+Natural-language prompts work too:
+
+> "Add a high-priority task to call the dentist tomorrow, tagged health."
+
+> "Show me everything in the +work project."
+
+> "I finished the report — cross it off."
+
+After any change, the skill re-lists your tasks so you always see the current state.
+
+## todo.txt format cheatsheet
+
+| Element        | Syntax              | Example                              |
+|----------------|---------------------|--------------------------------------|
+| Priority       | `(A)` … `(Z)`       | `(A) Call dentist`                   |
+| Completion     | `x ` prefix + date  | `x 2026-06-10 Buy groceries`         |
+| Creation date  | `YYYY-MM-DD`        | `2026-06-01 Write report`            |
+| Project tag    | `+project`          | `+health`                            |
+| Context tag    | `@context`          | `@phone`                             |
+| Metadata       | `key:value`         | `due:2026-06-30`                     |
+
+Full example:
+```
+(A) Call dentist @phone +health due:2026-06-15
+(B) 2026-06-01 Write report +work @computer
+x 2026-06-10 2026-06-01 Buy groceries +errands @store
+```
+
+See the [todo.txt format spec](https://github.com/todotxt/todo.txt) for the complete definition.
+
+## How it works
+
+The skill is a single [`SKILL.md`](./SKILL.md) file with YAML frontmatter (name, description, argument hint) followed by instructions that teach the agent:
+
+1. How to check for and install `todo.sh`.
+2. A reference of every `todo.sh` command and the flags that matter for automation (e.g. `-f` to skip confirmation prompts).
+3. The todo.txt format rules.
+4. Behavior guidelines — like always re-listing tasks after a change and suggesting `+project`/`@context` tags.
+
+There's no code to run and no dependencies to manage beyond `todo.sh` itself.
+
+## Contributing
+
+Contributions are welcome! See [CONTRIBUTING.md](./CONTRIBUTING.md) for how to propose changes, test the skill, and open a pull request.
+
+## Acknowledgements
+
+- The [todo.txt CLI](https://github.com/todotxt/todo.txt-cli) and the [todo.txt format](https://github.com/todotxt/todo.txt), created by Gina Trapani and maintained by the todo.txt community.
+- The [Claude Agent Skills](https://docs.claude.com/en/docs/claude-code/skills) system by Anthropic.
+
+## License
+
+[MIT](./LICENSE) © Eduardo Aguilera. This skill is an independent project and is not affiliated with the todo.txt project or Anthropic.
