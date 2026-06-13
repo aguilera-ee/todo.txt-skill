@@ -36,7 +36,19 @@ Ask Claude things like *"add buy milk to my groceries"*, *"what's on my list for
 
 ## Installation
 
-Clone this repository into your Claude skills directory. The skill is the repository itself, so the folder name becomes the skill name.
+Paste the one-liner for your platform:
+
+| Platform | One-liner |
+|---|---|
+| **Claude Code** | `curl -fsSL https://raw.githubusercontent.com/aguilera-ee/todo.txt-skill/master/install/claude-code.sh \| bash` |
+| **Codex CLI** | `curl -fsSL https://raw.githubusercontent.com/aguilera-ee/todo.txt-skill/master/install/codex.sh \| bash` |
+| **OpenClaw** | `curl -fsSL https://raw.githubusercontent.com/aguilera-ee/todo.txt-skill/master/install/openclaw.sh \| bash` |
+| **Hermes** | `curl -fsSL https://raw.githubusercontent.com/aguilera-ee/todo.txt-skill/master/install/hermes.sh \| bash` |
+
+All scripts are idempotent — running them a second time is safe.
+
+<details>
+<summary>Manual install (Claude Code)</summary>
 
 **Personal skill (available in every project):**
 ```shell
@@ -48,7 +60,8 @@ git clone https://github.com/aguilera-ee/todo.txt-skill.git ~/.claude/skills/tod
 git clone https://github.com/aguilera-ee/todo.txt-skill.git .claude/skills/todo.txt-skill
 ```
 
-That's it. The next time you start Claude Code, the `todo.txt-skill` skill will be available.
+The next time you start Claude Code, the `todo.txt-skill` skill will be available.
+</details>
 
 ## Usage
 
