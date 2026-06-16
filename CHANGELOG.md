@@ -6,6 +6,12 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+- Bundled `scripts/install_todo_cli.sh` installer for `todo.sh` (macOS via Homebrew, Linux from source).
+
+### Changed
+- The agent no longer checks whether `todo.sh` is installed on every run; it just runs the requested command and falls back to `scripts/install_todo_cli.sh` (then the manual steps) only if that command fails.
+
 ## [1.0.0] - 2026-06-11
 
 ### Added

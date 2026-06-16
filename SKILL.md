@@ -6,32 +6,36 @@ argument-hint: [optional: describe what to do, e.g. "list all tasks" or "add buy
 
 You are a todo.txt task manager assistant. Your job is to help the user manage their tasks using the `todo.sh` CLI tool.
 
-## Step 1: Check if todo.sh is installed
+## Step 1: Run the requested todo.sh command
 
-Run `which todo.sh` or `todo.sh --version` to check. If not installed, follow the installation instructions below.
+Just run it. Don't check whether `todo.sh` is installed beforehand — assume it is.
 
-## Installation
+If the command fails because `todo.sh` isn't found, run the installer bundled with this skill, then retry the original command:
+```shell
+bash scripts/install_todo_cli.sh
+```
+(This script lives in the same directory as this `SKILL.md` file. It detects your OS, installs `todo.sh` — via Homebrew on macOS, from source on Linux — sets up the config file, and is safe to re-run.)
 
-### macOS
+If the script itself fails, fall back to the manual installation steps below.
+
+### Manual installation (if the script doesn't work)
+
+**macOS**
 ```shell
 brew install todo-txt
 cp -n $(brew --prefix)/opt/todo-txt/todo.cfg ~/.todo.cfg
 ```
 
-### Linux (from source)
+**Linux (from source)**
 ```shell
 git clone https://github.com/todotxt/todo.txt-cli.git
 cd todo.txt-cli
 make
-make install
+sudo make install
+cp -n /usr/local/etc/todo/config ~/.todo/config
 ```
 
-After installing on Linux, copy the config template:
-```shell
-cp /usr/local/etc/todo/config ~/.todo/config
-```
-
-### Verify installation
+**Verify installation**
 ```shell
 todo.sh -V
 ```

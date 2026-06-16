@@ -11,28 +11,13 @@ Ask Claude things like *"add buy milk to my groceries"*, *"what's on my list for
 - 🗣️ **Natural language → CLI** — describe what you want; the skill picks the right command and flags.
 - ➕ **Full task lifecycle** — add, list, filter, prioritize, edit, complete, archive, and delete tasks.
 - 🏷️ **Projects & contexts** — understands `+project` and `@context` tags, plus `key:value` metadata like `due:2026-06-30`.
-- 🔧 **Self-installing guidance** — if `todo.sh` isn't installed, the skill walks the agent through setup on macOS and Linux.
+- 🔧 **Self-installing** — if `todo.sh` isn't installed, the skill runs a bundled script (`scripts/install_todo_cli.sh`) that sets it up on macOS or Linux.
 - 📄 **Plain text, yours forever** — your tasks stay in a portable `todo.txt` file you fully control.
 
 ## Prerequisites
 
 - [Claude Code](https://docs.claude.com/en/docs/claude-code) (or another client that supports Agent Skills).
-- The [todo.txt CLI](https://github.com/todotxt/todo.txt-cli) (`todo.sh`). The skill will offer to install it for you, or you can set it up ahead of time:
-
-  **macOS**
-  ```shell
-  brew install todo-txt
-  cp -n "$(brew --prefix)/opt/todo-txt/todo.cfg" ~/.todo.cfg
-  ```
-
-  **Linux (from source)**
-  ```shell
-  git clone https://github.com/todotxt/todo.txt-cli.git
-  cd todo.txt-cli && make && sudo make install
-  cp /usr/local/etc/todo/config ~/.todo/config
-  ```
-
-  Verify with `todo.sh -V`.
+- The [todo.txt CLI](https://github.com/todotxt/todo.txt-cli) (`todo.sh`). If it's missing, the skill runs the bundled `scripts/install_todo_cli.sh` for you (Homebrew on macOS, from source on Linux). You can also run that script yourself ahead of time, or set it up manually — see the "Manual installation" section in [`SKILL.md`](./SKILL.md).
 
 ## Installation
 
@@ -105,14 +90,14 @@ See the [todo.txt format spec](https://github.com/todotxt/todo.txt) for the comp
 
 ## How it works
 
-The skill is a single [`SKILL.md`](./SKILL.md) file with YAML frontmatter (name, description, argument hint) followed by instructions that teach the agent:
+The skill is a [`SKILL.md`](./SKILL.md) file with YAML frontmatter (name, description, argument hint) followed by instructions that teach the agent:
 
-1. How to check for and install `todo.sh`.
+1. To just run the requested `todo.sh` command, falling back to the bundled [`scripts/install_todo_cli.sh`](./scripts/install_todo_cli.sh) installer if it's missing.
 2. A reference of every `todo.sh` command and the flags that matter for automation (e.g. `-f` to skip confirmation prompts).
 3. The todo.txt format rules.
 4. Behavior guidelines — like always re-listing tasks after a change and suggesting `+project`/`@context` tags.
 
-There's no code to run and no dependencies to manage beyond `todo.sh` itself.
+The only dependency beyond `todo.sh` itself is the small installer script.
 
 ## Contributing
 

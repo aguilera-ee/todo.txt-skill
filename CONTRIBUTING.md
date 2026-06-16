@@ -12,14 +12,16 @@ Thanks for your interest in improving this skill! It's a small project, so the p
 
 ```
 .
-├── SKILL.md       # The skill itself: frontmatter + instructions for the agent
-├── README.md      # User-facing documentation
+├── SKILL.md                          # The skill itself: frontmatter + instructions for the agent
+├── scripts/
+│   └── install_todo_cli.sh           # Bundled installer the agent falls back to when todo.sh is missing
+├── README.md                         # User-facing documentation
 ├── CONTRIBUTING.md
 ├── CHANGELOG.md
 └── LICENSE
 ```
 
-There is no build step and no code — the skill is plain Markdown.
+There is no build step. `scripts/install_todo_cli.sh` is the only piece of executable code, and `SKILL.md` is what the agent reads to know when to call it. If you change one, check whether the other (and the manual fallback steps in `SKILL.md`) need to stay in sync.
 
 ## Editing the skill
 
