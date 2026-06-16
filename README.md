@@ -14,39 +14,13 @@ Ask Claude things like *"add buy milk to my groceries"*, *"what's on my list for
 - 🔧 **Self-installing** — if `todo.sh` isn't installed, the skill runs a bundled script (`scripts/install_todo_cli.sh`) that sets it up on macOS or Linux.
 - 📄 **Durable, plain text, yours forever** — your tasks live in a portable `todo.txt` file you fully control, readable with any text editor for as long as you need it, with no app or vendor lock-in.
 
-## Prerequisites
-
-- [Claude Code](https://docs.claude.com/en/docs/claude-code) (or another client that supports Agent Skills).
-- The [todo.txt CLI](https://github.com/todotxt/todo.txt-cli) (`todo.sh`). If it's missing, the skill runs the bundled `scripts/install_todo_cli.sh` for you (Homebrew on macOS, from source on Linux). You can also run that script yourself ahead of time, or set it up manually — see the "Manual installation" section in [`SKILL.md`](./SKILL.md).
-
 ## Installation
 
 Paste the one-liner for your platform:
 
-| Platform | One-liner |
-|---|---|
-| **Claude Code** | `curl -fsSL https://raw.githubusercontent.com/aguilera-ee/todo.txt-skill/master/install/claude-code.sh \| bash` |
-| **Codex CLI** | `curl -fsSL https://raw.githubusercontent.com/aguilera-ee/todo.txt-skill/master/install/codex.sh \| bash` |
-| **OpenClaw** | `curl -fsSL https://raw.githubusercontent.com/aguilera-ee/todo.txt-skill/master/install/openclaw.sh \| bash` |
-| **Hermes** | `curl -fsSL https://raw.githubusercontent.com/aguilera-ee/todo.txt-skill/master/install/hermes.sh \| bash` |
-
-All scripts are idempotent — running them a second time is safe.
-
-<details>
-<summary>Manual install (Claude Code)</summary>
-
-**Personal skill (available in every project):**
-```shell
-git clone https://github.com/aguilera-ee/todo.txt-skill.git ~/.claude/skills/todo.txt-skill
 ```
-
-**Project-scoped skill (shared with a repo via `.claude/skills`):**
-```shell
-git clone https://github.com/aguilera-ee/todo.txt-skill.git .claude/skills/todo.txt-skill
+npx skills add aguilera-ee/todo.txt-skill
 ```
-
-The next time you start Claude Code, the `todo.txt-skill` skill will be available.
-</details>
 
 ## Usage
 
