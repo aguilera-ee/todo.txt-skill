@@ -12,7 +12,7 @@ Ask Claude things like *"add buy milk to my groceries"*, *"what's on my list for
 - ➕ **Full task lifecycle** — add, list, filter, prioritize, edit, complete, archive, and delete tasks.
 - 🏷️ **Projects & contexts** — understands `+project` and `@context` tags, plus `key:value` metadata like `due:2026-06-30`.
 - 🔧 **Self-installing** — if `todo.sh` isn't installed, the skill runs a bundled script (`scripts/install_todo_cli.sh`) that sets it up on macOS or Linux.
-- 📄 **Plain text, yours forever** — your tasks stay in a portable `todo.txt` file you fully control.
+- 📄 **Durable, plain text, yours forever** — your tasks live in a portable `todo.txt` file you fully control, readable with any text editor for as long as you need it, with no app or vendor lock-in.
 
 ## Prerequisites
 
