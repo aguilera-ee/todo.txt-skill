@@ -1,10 +1,14 @@
-# todo.txt Skill for Claude
+# todo.txt Skill for AI Agents
 
-A [Claude Agent Skill](https://docs.claude.com/en/docs/claude-code/skills) that lets AI agents manage your tasks, todos, and reminders using the [todo.txt CLI](https://github.com/todotxt/todo.txt-cli) (`todo.sh`).
+A durable and light ToDo list your agent can use across conversations.
 
-Ask Claude things like *"add buy milk to my groceries"*, *"what's on my list for work?"*, or *"mark the dentist task as done"* — the skill translates these into the right `todo.sh` commands, runs them, and shows you the updated list.
+Ask things like *"add buy milk to my groceries"*, *"what's on my list for work?"*, or *"mark the dentist task as done"* — the skill translates these into the right `todo.sh` commands, runs them, and shows you the updated list.
 
-> **Why this exists:** the todo.txt format is a plain-text, future-proof, tool-agnostic way to track tasks. This skill teaches Claude how to drive the official CLI so you can manage that file conversationally — no public skill for it existed, so here it is.
+> **Why this exists:** the todo.txt format is a plain-text, future-proof, tool-agnostic way to track tasks. This skill teaches  how to drive the official CLI so you can manage that file conversationally — no public skill for it existed, so here it is.
+
+## WHo is it for?
+
+People running AI agents who want to keep their task list durable, light and portable.
 
 ## Features
 
@@ -24,7 +28,7 @@ npx skills add aguilera-ee/todo.txt-skill
 
 ## Usage
 
-Invoke it explicitly with a slash command, or just describe what you need and let Claude pick the skill:
+Invoke it explicitly with a slash command, or just describe what you need and let your agent pick the skill:
 
 ```
 /todo.txt-skill list all tasks
@@ -62,17 +66,6 @@ x 2026-06-10 2026-06-01 Buy groceries +errands @store
 
 See the [todo.txt format spec](https://github.com/todotxt/todo.txt) for the complete definition.
 
-## How it works
-
-The skill is a [`SKILL.md`](./SKILL.md) file with YAML frontmatter (name, description, argument hint) followed by instructions that teach the agent:
-
-1. To just run the requested `todo.sh` command, falling back to the bundled [`scripts/install_todo_cli.sh`](./scripts/install_todo_cli.sh) installer if it's missing.
-2. A reference of every `todo.sh` command and the flags that matter for automation (e.g. `-f` to skip confirmation prompts).
-3. The todo.txt format rules.
-4. Behavior guidelines — like always re-listing tasks after a change and suggesting `+project`/`@context` tags.
-
-The only dependency beyond `todo.sh` itself is the small installer script.
-
 ## Contributing
 
 Contributions are welcome! See [CONTRIBUTING.md](./CONTRIBUTING.md) for how to propose changes, test the skill, and open a pull request.
@@ -80,7 +73,6 @@ Contributions are welcome! See [CONTRIBUTING.md](./CONTRIBUTING.md) for how to p
 ## Acknowledgements
 
 - The [todo.txt CLI](https://github.com/todotxt/todo.txt-cli) and the [todo.txt format](https://github.com/todotxt/todo.txt), created by Gina Trapani and maintained by the todo.txt community.
-- The [Claude Agent Skills](https://docs.claude.com/en/docs/claude-code/skills) system by Anthropic.
 
 ## License
 
