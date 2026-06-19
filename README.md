@@ -1,5 +1,7 @@
 # todo.txt Skill for AI Agents
 
+![](./assets/demo.gif)
+
 A durable and light ToDo list your agent can use across conversations.
 
 Ask things like *"add buy milk to my groceries"*, *"what's on my list for work?"*, or *"mark the dentist task as done"* — the skill translates these into the right `todo.sh` commands, runs them, and shows you the updated list.
