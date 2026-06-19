@@ -1,0 +1,15 @@
+{
+  "name": "todo.txt-skill",
+  "version": "1.0.0",
+  "description": "Manage tasks, todos and reminders using the todo.txt CLI (todo.sh). Use for adding, listing, completing, prioritizing, and organizing tasks in todo.txt format.",
+  "license": "MIT",
+  "author": "Eduardo Aguilera",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aguilera-ee/todo.txt-skill.git"
+  },
+  "keywords": ["pi-package"],
+  "pi": {
+    "skills": ["SKILL.md"]
+  }
+}
