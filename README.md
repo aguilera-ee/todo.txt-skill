@@ -8,7 +8,7 @@ Ask things like *"add buy milk to my groceries"*, *"what's on my list for work?"
 
 > **Why this exists:** the todo.txt format is a plain-text, future-proof, tool-agnostic way to track tasks. This skill teaches  how to drive the official CLI so you can manage that file conversationally — no public skill for it existed, so here it is.
 
-## WHo is it for?
+## Who is it for?
 
 People running AI agents who want to keep their task list durable, light and portable.
 
