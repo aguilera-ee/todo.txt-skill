@@ -22,11 +22,16 @@ People running AI agents who want to keep their task list durable, light and por
 
 ## Installation
 
-Paste the one-liner for your platform:
+Paste the one-liner (recommended):
 
 ```
 npx skills add aguilera-ee/todo.txt-skill
 ```
+
+Also available from these registries:
+
+- **[pi](https://pi.dev/packages/todo.txt-skill)**
+- **[ClawHub](https://clawhub.ai/eaguilera23/todo-txt-skill)**
 
 ## Usage
 
